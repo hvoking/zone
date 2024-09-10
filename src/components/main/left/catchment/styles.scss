@@ -1,0 +1,27 @@
+.catchment-wrapper {
+	display: grid;
+	grid-template-rows: min-content auto 60px;
+	background-color: rgba(32, 32, 43, 1);
+	border-radius: 20px;
+}
+.circle-wrapper {
+	display: grid; 
+	grid-template-columns: auto min-content;
+	align-items: center;
+}
+.distance-info {
+	display: flex; 
+	gap: 10px;
+	text-align: center; 
+	color: rgba(255, 255, 255, 0.8);
+	white-space: nowrap;
+	padding-right: 20px;
+}
+.address-wrapper {
+	height: 20px; 
+	display: flex; 
+	gap: 5px; 
+	align-items: center;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.7em;
+}

@@ -1,0 +1,12 @@
+.built-filter-wrapper {
+    display: grid;
+    grid-template-rows: min-content auto;
+    background-color: rgba(33, 33, 43, 1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.built-filter {
+	display: grid; 
+	grid-template-rows: auto 60px; 
+	overflow: hidden;
+}

@@ -1,0 +1,7 @@
+.site-wrapper {
+	display: grid; 
+	grid-template-rows: min-content auto min-content; 
+	background-color: rgba(32, 32, 43, 1); 
+	border-radius: 20px;
+	padding-bottom: 10px;
+}

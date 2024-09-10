@@ -1,0 +1,16 @@
+.basemaps-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  padding-top: 90px;
+  padding-bottom: 5px;
+  z-index: 3;
+  cursor: pointer;
+  background: rgba(32, 32, 43, 1);
+  border-radius: 5px;
+}
+.basemaps-image {
+  padding: 5px;
+  padding-top: 7px;
+  width: 15px;
+}

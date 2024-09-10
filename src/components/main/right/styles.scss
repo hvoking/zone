@@ -1,0 +1,11 @@
+.right-wrapper {
+	display: grid;
+	overflow: hidden;
+	background-color: rgba(23, 23, 32, 1);
+}
+.right-items-wrapper {
+	display: grid;
+	height: calc(100vh - 80px);
+	grid-template-rows: 2fr min-content 3fr;
+	grid-gap: 5px;
+}

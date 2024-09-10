@@ -1,0 +1,20 @@
+.zone-wrapper {
+	display: grid;
+	grid-template-rows: min-content auto;
+	background-color: rgba(32, 32, 43, 1);
+	border-radius: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	grid-gap: 10px;
+}
+.zone {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.zone-title {
+	color: rgba(255, 255, 255, 0.8);
+}

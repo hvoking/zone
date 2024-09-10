@@ -1,0 +1,12 @@
+.left-wrapper {
+	display: grid;
+	overflow: hidden;
+	background-color: rgba(23, 23, 32, 1);
+	padding: 5px;
+	padding-right: 0;
+}
+.left-items-wrapper {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 5px;
+}

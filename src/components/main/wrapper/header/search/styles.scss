@@ -1,0 +1,41 @@
+$font-color: rgba(255, 255, 255, 0.8);
+$background-color: rgba(23, 23, 32, 1);
+
+.search-wrapper {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  position: relative;
+  border-radius: 5px;
+  align-items: center;
+  background-color: $background-color;
+}
+.search-input {
+  overflow-x: hidden;
+  color: $font-color;
+  background-color: $background-color; 
+  border: none;
+  height: 30px;
+  font-size: 1em;
+  text-indent: 5px;
+  width: 245px;
+}
+.search-input:focus {
+  outline: none;
+}
+.cancel-cross-wrapper {
+  width: 30px;
+  display: grid;
+}
+.cancel-cross {
+  width: 15px;
+  cursor: pointer;
+  align-self: center;
+  justify-self: center;
+  padding-right: 15px;
+}
+.search-icon {
+  cursor: pointer;
+  height: 22px;
+  align-self: center;
+  padding-right: 15px;
+}
