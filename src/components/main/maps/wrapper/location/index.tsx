@@ -1,5 +1,5 @@
 // Context imports
-import { useGoogleReverseApi } from '../../../context/api/google/reverse';
+import { useGoogleReverseApi } from '../../../../context/api/google/reverse';
 import './styles.scss';
 
 export const Location = () => {

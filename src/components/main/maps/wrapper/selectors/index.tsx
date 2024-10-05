@@ -3,7 +3,7 @@ import { LayerSelector } from './layers';
 import './styles.scss';
 
 // Context imports
-import { useVisibility } from '../../../context/filters/visibility';
+import { useVisibility } from '../../../../context/filters/visibility';
 
 export const Selectors = () => {
 	const { 

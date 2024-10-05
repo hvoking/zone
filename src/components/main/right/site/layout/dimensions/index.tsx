@@ -1,5 +1,5 @@
 // Context imports
-import { useVectors } from '../../../../context/filters/vectors';
+import { useVectors } from '../../../../../context/filters/vectors';
 
 export const Dimensions = ({ xScale, xBottom, yBottom, distLeft }: any) => {
   const { iRight, jRight, iLeft, jLeft } = useVectors();

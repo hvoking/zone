@@ -6,11 +6,11 @@ import { SVGWrapper } from './svg';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../context/filters/geo';
-import { usePolygonApi } from '../../../context/api/polygon';
-import { useCircleDimensions } from '../../../context/filters/dimensions/circle';
-import { useStyleSheet } from '../../../context/filters/stylesheet';
-import { useSVGMapSizes } from '../../../context/sizes/maps/svgMap';
+import { useGeo } from '../../../../context/filters/geo';
+import { usePolygonApi } from '../../../../context/api/polygon';
+import { useCircleDimensions } from '../../../../context/filters/dimensions/circle';
+import { useStyleSheet } from '../../../../context/filters/stylesheet';
+import { useSVGMapSizes } from '../../../../context/sizes/maps/svgMap';
 
 // Third-party imports
 import * as d3 from 'd3';

@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useCircleSizes } from '../../../context/sizes/left/circle';
+import { useCircleSizes } from '../../../../context/sizes/left/circle';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { width, height, setWidth, setHeight, margin } = useCircleSizes();

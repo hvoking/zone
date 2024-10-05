@@ -2,7 +2,7 @@
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../context/filters/geo';
+import { useGeo } from '../../../../context/filters/geo';
 
 export const BasemapsSelectors = () => {
 	const { basemap, setBasemap } = useGeo();

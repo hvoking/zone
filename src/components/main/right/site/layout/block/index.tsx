@@ -2,8 +2,8 @@
 import './styles.scss';
 
 // Context imports
-import { useVectors } from '../../../../context/filters/vectors';
-import { useStyleSheet } from '../../../../context/filters/stylesheet';
+import { useVectors } from '../../../../../context/filters/vectors';
+import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
 export const Block = ({ xBottom, yBottom, distRight, distLeft }: any) => {
 	const { linesColor, linesWidth, fillColor } = useStyleSheet();

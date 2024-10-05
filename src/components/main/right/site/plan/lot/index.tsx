@@ -1,5 +1,5 @@
 // Context imports
-import { useStyleSheet } from '../../../../context/filters/stylesheet';
+import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
 export const Lot = ({ path, currentLot, ocioso }: any) => {
 	const { linesColor, linesWidth } = useStyleSheet();

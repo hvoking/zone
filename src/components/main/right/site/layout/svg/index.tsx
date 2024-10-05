@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useLayoutSizes } from '../../../../context/sizes/right/layout';
+import { useLayoutSizes } from '../../../../../context/sizes/right/layout';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { width, height, setWidth, setHeight, margin } = useLayoutSizes();

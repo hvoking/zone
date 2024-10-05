@@ -2,7 +2,7 @@
 import { useEffect, useRef, useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { usePerspectiveSizes } from '../../../../context/sizes/right/perspective';
+import { usePerspectiveSizes } from '../../../../../context/sizes/right/perspective';
 
 // Third-party imports
 import * as d3 from 'd3';

@@ -1,7 +1,7 @@
 // Context imports
-import { useVectors } from '../../../../context/filters/vectors';
-import { useModuleDimensions } from '../../../../context/filters/dimensions/module';
-import { useStyleSheet } from '../../../../context/filters/stylesheet';
+import { useVectors } from '../../../../../context/filters/vectors';
+import { useModuleDimensions } from '../../../../../context/filters/dimensions/module';
+import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
 export const Block = ({ xBottom, yBottom, xScale, yScale, item }: any) => {
 	const { iLeft, jLeft, iRight, jRight } = useVectors();

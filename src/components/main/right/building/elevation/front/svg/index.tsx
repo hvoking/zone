@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useFrontElevationSizes } from '../../../../../context/sizes/right/elevation/front';
+import { useFrontElevationSizes } from '../../../../../../context/sizes/right/elevation/front';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { width, height, setWidth, setHeight, margin } = useFrontElevationSizes();

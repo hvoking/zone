@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../context/filters/geo';
+import { useGeo } from '../../../context/filters/geo';
 
 // Third-party imports
 import { Marker } from 'react-map-gl';

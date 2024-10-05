@@ -10,7 +10,7 @@ import { Wrapper } from './wrapper'
 import { Layers } from './layers';
 
 // Context imports
-import { useGeo } from '../context/filters/geo';
+import { useGeo } from '../../context/filters/geo';
 
 // Third-party imports
 import { Map } from 'react-map-gl';

@@ -5,9 +5,9 @@ import { Slider } from './slider';
 import './styles.scss';
 
 // Context imports
-import { useCircleDimensions } from '../../context/filters/dimensions/circle';
-import { useStyleSheet } from '../../context/filters/stylesheet';
-import { useCircleSizes } from '../../context/sizes/left/circle';
+import { useCircleDimensions } from '../../../context/filters/dimensions/circle';
+import { useStyleSheet } from '../../../context/filters/stylesheet';
+import { useCircleSizes } from '../../../context/sizes/left/circle';
 
 // Third-party imports
 import * as d3 from 'd3';

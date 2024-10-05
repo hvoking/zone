@@ -1,5 +1,5 @@
 // Context imports
-import { useParcelsApi } from '../../../../context/api/geom/parcels';
+import { useParcelsApi } from '../../../../../context/api/geom/parcels';
 
 // Third party imports
 import * as d3 from 'd3';

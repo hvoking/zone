@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useSideElevationSizes } from '../../../../../context/sizes/right/elevation/side';
+import { useSideElevationSizes } from '../../../../../../context/sizes/right/elevation/side';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { width, height, setWidth, setHeight, margin } = useSideElevationSizes();

@@ -3,7 +3,7 @@ import { ReCenter } from './reCenter';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../context/filters/geo';
+import { useGeo } from '../../../context/filters/geo';
 
 // Third party imports
 import { NavigationControl } from 'react-map-gl';

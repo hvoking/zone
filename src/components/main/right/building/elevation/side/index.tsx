@@ -2,9 +2,9 @@
 import { SVGWrapper } from './svg';
 
 // Context imports
-import { useModuleDimensions } from '../../../../context/filters/dimensions/module';
-import { useSideElevationSizes } from '../../../../context/sizes/right/elevation/side';
-import { useStyleSheet } from '../../../../context/filters/stylesheet';
+import { useModuleDimensions } from '../../../../../context/filters/dimensions/module';
+import { useSideElevationSizes } from '../../../../../context/sizes/right/elevation/side';
+import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
 // Third-party imports
 import * as d3 from 'd3';

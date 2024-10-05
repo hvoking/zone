@@ -6,7 +6,7 @@ import { Wrapper } from './wrapper';
 import './styles.scss';
 
 // Context imports
-import { MainProvider } from './context';
+import { MainProvider } from '../context';
 
 export const Main = () => (
   <MainProvider>

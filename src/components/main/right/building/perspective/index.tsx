@@ -4,11 +4,11 @@ import { Infra } from './infra';
 import { Block } from './block';
 
 // Context imports
-import { usePerspectiveSizes } from '../../../context/sizes/right/perspective';
-import { useVectors } from '../../../context/filters/vectors';
-import { useBuilding } from '../../../context/filters/building';
-import { useBuildingApi } from '../../../context/api/parcel/building';
-import { useModuleDimensions } from '../../../context/filters/dimensions/module';
+import { usePerspectiveSizes } from '../../../../context/sizes/right/perspective';
+import { useVectors } from '../../../../context/filters/vectors';
+import { useBuilding } from '../../../../context/filters/building';
+import { useBuildingApi } from '../../../../context/api/parcel/building';
+import { useModuleDimensions } from '../../../../context/filters/dimensions/module';
 
 // Third-party imports
 import * as d3 from 'd3';
