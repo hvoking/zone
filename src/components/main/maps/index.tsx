@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 import { Pin } from './pin';
 import { Controllers } from './controllers';
 import { Wrapper } from './wrapper'
+import { Tiles } from './tiles';
 
 // Layers imports
 import { Layers } from './layers';
@@ -38,6 +39,7 @@ export const Maps = () => {
         <Layers/>
         <Controllers/>
         <Pin/>
+        <Tiles/>
       </Map>
 
     </Wrapper>
