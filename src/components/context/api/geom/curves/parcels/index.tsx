@@ -2,7 +2,6 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { usePolygonApi } from '../../../../api/polygon';
 import { useVisibility } from '../../../../filters/visibility';
 
 const ParcelsCurvesApiContext: React.Context<any> = createContext(null)
@@ -12,7 +11,6 @@ export const useParcelsCurvesApi = () => {
 }
 
 export const ParcelsCurvesApiProvider = ({children}: any) => {
-	const { polygonData } = usePolygonApi();
 	const [ parcelsCurvesData, setParcelsCurvesData ] = useState<any>(null);
 	const { activeCurves } = useVisibility();
 
@@ -28,7 +26,7 @@ export const ParcelsCurvesApiProvider = ({children}: any) => {
 			setParcelsCurvesData(receivedData);
 		}
 		activeCurves && fetchData();
-	}, [ polygonData, activeCurves ]);
+	}, [ activeCurves ]);
 
 	return (
 		<ParcelsCurvesApiContext.Provider value={{ parcelsCurvesData }}>

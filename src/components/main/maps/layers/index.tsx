@@ -1,5 +1,4 @@
 // Layer imports
-import { useParcels } from '../../../context/maps/layers/parcels';
 import { useEnvelop } from '../../../context/maps/layers/envelop';
 import { useDrain } from '../../../context/maps/layers/drain';
 import { useCurves } from '../../../context/maps/layers/curves';
@@ -18,7 +17,6 @@ const DeckGLOverlay = (props: DeckProps) => {
 }
 
 export const Layers = () => {
-	const { parcelsLayer } = useParcels();
 	const { circleLayer } = useCircle();
 	const { curvesLayer } = useCurves();
 	const { drainLayer } = useDrain();
@@ -27,7 +25,6 @@ export const Layers = () => {
 
 	const layers = [ 
 		circleLayer, 
-		parcelsLayer,
 		drainLayer,
 		curvesLayer,
 		buildingLayer,

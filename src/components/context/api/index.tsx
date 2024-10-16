@@ -2,11 +2,9 @@
 import { ParcelApiProvider } from './parcel';
 import { GoogleApiProvider } from './google';
 import { GeomApiProvider } from './geom';
-import { PolygonApiProvider } from './polygon';
 
 export const ApiProvider = ({children}: any) => {
   return (
-    <PolygonApiProvider>
     <GeomApiProvider>
     <ParcelApiProvider>
     <GoogleApiProvider>
@@ -14,7 +12,6 @@ export const ApiProvider = ({children}: any) => {
     </GoogleApiProvider>
     </ParcelApiProvider>
     </GeomApiProvider>
-    </PolygonApiProvider>
   )
 }
 

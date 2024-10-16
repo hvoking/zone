@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // App imports
 import { Title } from './title';
-import { Graphics } from './graphics';
+// import { Graphics } from './graphics';
 import { Slider } from './slider';
 import './styles.scss';
 
@@ -14,11 +14,12 @@ export const Area = () => {
 		<div className="area-filter-wrapper">
 			<Title/>
 			<div className="area-filter">
-				
+				<div></div>
+				{/*
 			  <Graphics 
 			    activeForeground={activeForeground} 
 			    setActiveForeground={setActiveForeground}
-			  />
+			  />*/}
 			  
 			  <div style={{transform: "translateY(-8px)"}}>
 				  <Slider
