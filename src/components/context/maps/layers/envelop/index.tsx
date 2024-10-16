@@ -12,7 +12,7 @@ import { useStyleSheet } from '../../../filters/stylesheet';
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import { GeoJsonLayer } from 'deck.gl';
-import * as turf from 'turf';
+import * as turf from '@turf/turf';
 
 const EnvelopContext: React.Context<any> = createContext(null)
 

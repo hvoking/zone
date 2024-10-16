@@ -9,7 +9,7 @@ import { useBuildingApi } from '../../../api/parcel/building';
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import { GeoJsonLayer } from 'deck.gl';
-import * as turf from 'turf';
+import * as turf from '@turf/turf';
 
 const BuildingLayerContext: React.Context<any> = createContext(null)
 
@@ -28,7 +28,7 @@ export const BuildingLayerProvider = ({children}: any) => {
 
 	const offsetGeometryInside = (multiPolygon: any, offset: any) => {
 	    const polygon: any = turf.multiPolygon(multiPolygon.coordinates);
-	    const offsettedGeom = turf.buffer(polygon, -offset, 'meters');
+	    const offsettedGeom = turf.buffer(polygon, -offset, {units: 'meters'});
 	    return offsettedGeom;
 	}
 
