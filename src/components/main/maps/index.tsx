@@ -8,7 +8,6 @@ import { Wrapper } from './wrapper'
 import { Tiles } from './tiles';
 import { Circle } from './circle';
 import { Mask } from './mask';
-import { Drain } from './drain';
 
 // Layers imports
 import { Layers } from './layers';
@@ -85,7 +84,6 @@ export const Maps = () => {
         <Avatar/>
         <Tiles/>
         <Mask/>
-        <Drain/>
       </Map>
 
     </Wrapper>

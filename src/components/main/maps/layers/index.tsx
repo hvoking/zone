@@ -2,6 +2,7 @@
 import { useEnvelop } from '../../../context/maps/layers/envelop';
 import { useBuildingLayer } from '../../../context/maps/layers/building';
 import { useCurves } from '../../../context/maps/layers/curves';
+import { useDrain } from '../../../context/maps/layers/drain';
 
 // Third-party imports
 import { useControl } from 'react-map-gl';
@@ -18,9 +19,11 @@ export const Layers = () => {
 	const { envelopLayer, envelopLinesLayer } = useEnvelop();
 	const { buildingLayer } = useBuildingLayer();
 	const { curvesLayer } = useCurves();
+	const { drainLayer } = useDrain();
 
 	const layers = [ 
 		curvesLayer,
+		drainLayer,
 		buildingLayer,
 		envelopLayer,
 		envelopLinesLayer,
