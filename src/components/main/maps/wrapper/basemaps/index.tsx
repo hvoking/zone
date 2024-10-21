@@ -4,7 +4,7 @@ import './styles.scss';
 // Context imports
 import { useGeo } from '../../../../context/filters/geo';
 
-export const BasemapsSelectors = () => {
+export const Basemaps = () => {
 	const { basemap, setBasemap } = useGeo();
 
 	const onClick = () => {
@@ -25,4 +25,4 @@ export const BasemapsSelectors = () => {
 	)
 }
 
-BasemapsSelectors.displayName="BasemapsSelectors";
+Basemaps.displayName="Basemaps";

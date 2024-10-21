@@ -1,21 +1,6 @@
 .wrapper-header{
   background-color: rgba(28, 40, 51, 1);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-}
-.small-header {
-  display: none;
-}
-@media screen and (max-width: 600px) {
-  .wrapper-header {
-    padding-left: 10px;
-  }
-  .small-header {
-    display: block;
-  }
-  .normal-header {
-    display: none;
-  }
 }
