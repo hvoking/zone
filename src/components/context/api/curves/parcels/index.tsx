@@ -18,20 +18,20 @@ export const ParcelsCurvesApiProvider = ({children}: any) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const tempUrl = `
-				${process.env.REACT_APP_API_URL}/
-				parcels_curves_api
-				?schema=ambiental
-				&table=blumenau_curvas
-				&polygon=${JSON.stringify(circleGeometry.geometry)}
-			`;
-			const url = tempUrl.replace(/\s/g, '');
-			const res = await fetch(url);
+			const res = await fetch(`${process.env.REACT_APP_API_URL}/parcels_curves_api`, {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ 
+					"polygon": JSON.stringify(circleGeometry.geometry),
+					"schema": "ambiental",
+					"table": "blumenau_curvas"
+				}),
+			});
 			const receivedData = await res.json();
 			setParcelsCurvesData(receivedData);
 		}
 		activeCurves && fetchData();
-	}, [ activeCurves ]);
+	}, [ activeCurves, circleGeometry ]);
 
 	return (
 		<ParcelsCurvesApiContext.Provider value={{ parcelsCurvesData }}>
