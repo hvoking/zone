@@ -2,7 +2,8 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useVisibility } from '../../filters/visibility/';
+import { useVisibility } from '../../filters/visibility';
+import { useCircle } from '../../circle';
 
 const DrainApiContext: React.Context<any> = createContext(null)
 
@@ -11,22 +12,27 @@ export const useDrainApi = () => {
 }
 
 export const DrainApiProvider = ({children}: any) => {
-	const [ drainData, setDrainData ] = useState<any>(null);
 	const { activeDrain } = useVisibility();
+	const { circleGeometry } = useCircle();
+
+	const [ drainData, setDrainData ] = useState<any>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const tempUrl = `
-				${process.env.REACT_APP_API_URL}/
-				drain_api
-			`;
-			const url = tempUrl.replace(/\s/g, '');
-			const res = await fetch(url);
+			const res = await fetch(`${process.env.REACT_APP_API_URL}/drain_api`, {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ 
+					"polygon": JSON.stringify(circleGeometry.geometry),
+					"schema": "infraestrutura",
+					"table": "rede_drenagem"
+				}),
+			});
 			const receivedData = await res.json();
 			setDrainData(receivedData);
 		}
 		activeDrain && fetchData();
-	}, [ activeDrain ]);
+	}, [ activeDrain, circleGeometry ]);
 
 	return (
 		<DrainApiContext.Provider value={{ drainData }}>
