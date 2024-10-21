@@ -8,6 +8,8 @@ import { Wrapper } from './wrapper'
 import { Tiles } from './tiles';
 import { Circle } from './circle';
 import { Mask } from './mask';
+import { Curves } from './curves';
+import { Drain } from './drain';
 
 // Layers imports
 import { Layers } from './layers';
@@ -46,7 +48,7 @@ export const Maps = () => {
         type: 'clip',
         source: 'eraser',
         layout: {
-          'clip-layer': ['building-extrusion']
+          'clip-layer-types': ['model']
         },
         minzoom: 14
       });
@@ -84,6 +86,8 @@ export const Maps = () => {
         <Avatar/>
         <Tiles/>
         <Mask/>
+        <Curves/>
+        <Drain/>
       </Map>
 
     </Wrapper>
