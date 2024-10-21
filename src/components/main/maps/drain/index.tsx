@@ -1,5 +1,5 @@
 // Context imports
-import { useDrainApi } from '../../../context/api/geom/drain';
+import { useDrainApi } from '../../../context/api/drain';
 
 // Third party imports
 import { Source, Layer, LayerProps } from 'react-map-gl';

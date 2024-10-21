@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../../../filters/geo';
+import { useGeo } from '../../../filters/geo';
 
 const ParcelCurvesApiContext: React.Context<any> = createContext(null)
 

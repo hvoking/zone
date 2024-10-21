@@ -1,5 +1,5 @@
 // Context imports
-import { useParcelCurvesApi } from '../../../../../context/api/geom/curves/parcel';
+import { useParcelCurvesApi } from '../../../../../context/api/curves/parcel';
 
 export const Curves = ({ path }: any) => {
 	const { parcelCurvesData } = useParcelCurvesApi();

@@ -2,8 +2,8 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useVisibility } from '../../../../filters/visibility';
-import { useCircle } from '../../../../circle';
+import { useVisibility } from '../../../filters/visibility';
+import { useCircle } from '../../../circle';
 
 const ParcelsCurvesApiContext: React.Context<any> = createContext(null)
 

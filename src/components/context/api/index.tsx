@@ -1,14 +1,20 @@
 // App imports
 import { ParcelApiProvider } from './parcel';
-import { GeomApiProvider } from './geom';
+import { DrainApiProvider } from './drain';
+import { ParcelsCurvesApiProvider } from './curves/parcels';
+import { ParcelCurvesApiProvider } from './curves/parcel';
 
 export const ApiProvider = ({children}: any) => {
   return (
-    <GeomApiProvider>
+    <DrainApiProvider>
+    <ParcelsCurvesApiProvider>
+    <ParcelCurvesApiProvider>
     <ParcelApiProvider>
       {children}
     </ParcelApiProvider>
-    </GeomApiProvider>
+    </ParcelCurvesApiProvider>
+    </ParcelsCurvesApiProvider>
+    </DrainApiProvider>
   )
 }
 

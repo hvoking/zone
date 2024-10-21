@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useVisibility } from '../../../filters/visibility/';
+import { useVisibility } from '../../filters/visibility/';
 
 const DrainApiContext: React.Context<any> = createContext(null)
 
