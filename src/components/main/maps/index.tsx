@@ -81,9 +81,9 @@ export const Maps = () => {
         <Layers/>
         <Circle/>
         <Controllers/>
-        <Avatar/>
         <Tiles/>
         <Mask/>
+        <Avatar/>
       </Map>
 
     </Wrapper>

@@ -29,7 +29,7 @@ export const DrainProvider = ({children}: any) => {
 			getPath: (d: any) => d.geometry.coordinates[0],
 			getColor: (d: any) => [ 33, 33, 255, 255 ],
 			getWidth: (d: any) => d.dimensions /  1000,
-			visible: activeDrain
+			visible: activeDrain,
 		});
 	return (
 		<DrainPathContext.Provider value={{ drainLayer }}>

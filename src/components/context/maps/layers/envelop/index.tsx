@@ -6,7 +6,6 @@ import { maxOffsetGeom, nearestPoints, linesToPolygon } from './helpers';
 
 // Context imports
 import { useEnvelopApi } from '../../../api/parcel/envelop';
-import { useStyleSheet } from '../../../filters/stylesheet';
 
 // Third party imports
 // @ts-ignore
@@ -22,12 +21,10 @@ export const useEnvelop = () => {
 
 export const EnvelopProvider = ({children}: any) => {
 	const { envelopData } = useEnvelopApi();
-	const { linesColor, fillColor, linesWidth } = useStyleSheet();
-	const polygonFill = fillColor.replace("rgba(", "").replace(")", "").split(",");
-	polygonFill[3] = +polygonFill[3] * 255;
 
-	const strokeColor = linesColor.replace("rgba(", "").replace(")", "").split(",");
-	strokeColor[3] = 20;
+	const linesColor = [255, 255, 255, 20];
+	const fillColor = [255, 255, 255, 40];
+	const linesWidth  = 0.3;
 
 	if (!envelopData) return <></>
 
@@ -55,7 +52,7 @@ export const EnvelopProvider = ({children}: any) => {
 			return new GeoJsonLayer({
 				id: `envelop-polygons-${index}`,
 				data: turf.multiPolygon(item),
-				getFillColor: polygonFill.map((item: any) => parseInt(item)),
+				getFillColor: fillColor.map((item: any) => parseInt(item)),
 				getLineWidth: 0,
 				parameters: { depthTest: false },
 			})
@@ -66,7 +63,7 @@ export const EnvelopProvider = ({children}: any) => {
 			return new GeoJsonLayer({
 				id: `envelop-lines-${index}`,
 				data: turf.featureCollection(item),
-				getLineColor: strokeColor.map((item: any) => parseInt(item)),
+				getLineColor: linesColor.map((item: any) => parseInt(item)),
 				getLineWidth: linesWidth,
 			})
 		})
