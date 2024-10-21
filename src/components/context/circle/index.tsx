@@ -2,7 +2,7 @@
 import { useState, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../filters/geo';
 
 // Third-party libraries
 import * as turf from '@turf/turf';

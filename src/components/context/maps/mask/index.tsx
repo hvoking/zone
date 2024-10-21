@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useContext, createContext } from 'react';
 
 // Context imports
 import { useGeo } from '../../filters/geo';
-import { useCircle } from '../circle';
+import { useCircle } from '../../circle';
 
 // Third-party imports
 import * as turf from '@turf/turf';

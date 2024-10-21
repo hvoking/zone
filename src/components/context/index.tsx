@@ -5,11 +5,13 @@ import { SizesProvider } from './sizes';
 import { ApiProvider } from './api';
 import { StylesProvider } from './styles';
 import { DimensionsProvider } from './dimensions';
+import { CircleProvider } from './circle';
 
 export const MainProvider = ({ children }: any) => {
 	return (
 		<DimensionsProvider>
 		<FiltersProvider>
+		<CircleProvider>
 		<ApiProvider>
 		<SizesProvider>
 		<MapsProvider>
@@ -19,6 +21,7 @@ export const MainProvider = ({ children }: any) => {
 		</MapsProvider>
 		</SizesProvider>
 		</ApiProvider>
+		</CircleProvider>
 		</FiltersProvider>
 		</DimensionsProvider>
 	)

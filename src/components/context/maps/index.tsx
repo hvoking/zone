@@ -2,11 +2,9 @@
 import { LayersProvider } from './layers';
 import { EventsProvider } from './events';
 import { MaskProvider } from './mask';
-import { CircleProvider } from './circle';
 
 export const MapsProvider = ({children}: any) => {
   return (
-    <CircleProvider>
     <LayersProvider>
     <EventsProvider>
     <MaskProvider>
@@ -14,7 +12,6 @@ export const MapsProvider = ({children}: any) => {
     </MaskProvider>
     </EventsProvider>
     </LayersProvider>
-    </CircleProvider>
   )
 }
 

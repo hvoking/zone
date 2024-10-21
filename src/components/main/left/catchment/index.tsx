@@ -5,7 +5,7 @@ import { Slider } from './slider';
 import './styles.scss';
 
 // Context imports
-import { useCircle } from '../../../context/maps/circle';
+import { useCircle } from '../../../context/circle';
 import { useCircleSizes } from '../../../context/sizes/left/circle';
 
 // Third-party imports
