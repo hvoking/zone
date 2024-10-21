@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useParcelSliderSizes } from '../../../../../context/sizes/left/slider/parcel';
+import { useParcelSliderSizes } from '../../../../../context/sizes/slider/parcel';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { margin, width, height, setWidth, setHeight } = useParcelSliderSizes();

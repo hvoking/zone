@@ -14,16 +14,16 @@ export const Built = () => {
 		<div className="built-filter-wrapper">
 			<Title/>
 			<div className="built-filter">
-				<Graphics 
-					activeForeground={activeForeground} 
-					setActiveForeground={setActiveForeground}
-				/>
-				<div style={{transform: "translateY(-8px)"}}>
-					<Slider
-						activeForeground={activeForeground} 
-						setActiveForeground={setActiveForeground}
-					/>
-				</div>
+			  <Graphics 
+			    activeForeground={activeForeground} 
+			    setActiveForeground={setActiveForeground}
+			  />
+			  <div style={{transform: "translateY(-8px)"}}>
+				  <Slider
+				    activeForeground={activeForeground} 
+				    setActiveForeground={setActiveForeground}
+				  />
+			  </div>
 			</div>
 		</div>
 	)

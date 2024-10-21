@@ -2,7 +2,7 @@
 import { useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useConstructionSliderSizes } from '../../../../../context/sizes/left/slider/construction';
+import { useConstructionSliderSizes } from '../../../../../context/sizes/slider/construction';
 
 export const SVGWrapper = ({ children }: any) => {
 	const { margin, width, height, setWidth, setHeight } = useConstructionSliderSizes();
