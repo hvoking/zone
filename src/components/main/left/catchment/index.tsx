@@ -5,8 +5,7 @@ import { Slider } from './slider';
 import './styles.scss';
 
 // Context imports
-import { useCircleDimensions } from '../../../context/filters/dimensions/circle';
-import { useStyleSheet } from '../../../context/filters/stylesheet';
+import { useCircle } from '../../../context/maps/circle';
 import { useCircleSizes } from '../../../context/sizes/left/circle';
 
 // Third-party imports
@@ -14,8 +13,7 @@ import * as d3 from 'd3';
 
 export const Catchment = ({ polygonArea, polygon }: any) => {
 	const { innerWidth, innerHeight } = useCircleSizes();
-	const { maxBound, radiusPosition } = useCircleDimensions();
-	const { fillColor } = useStyleSheet();
+	const { maxBound, radiusPosition } = useCircle();
 
 	const r: any = d3.min([innerWidth / 2, innerHeight / 2])
 
@@ -32,13 +30,13 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 							cx={innerWidth / 2}
 							cy={ innerHeight / 2}
 							r={xScale(radiusPosition * 1000)}
-							fill={fillColor}
+							fill={"rgba(126, 126, 132, 0.4)"}
 						/>
 					</SVGWrapper>
 					<div className="distance-info">
 						<div>
 							<div>
-								{(Math.round(radiusPosition * 100 * 10) / 10).toFixed(1)}
+								{(Math.round(radiusPosition* 10) / 10).toFixed(1)}
 								<span style={{fontSize: "0.8em"}}> km</span>
 							</div>
 
@@ -46,7 +44,7 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 						</div>
 						<div>
 							<div>
-								{Math.round(radiusPosition * 100 * 12)}
+								{Math.round(radiusPosition * 12)}
 								<span style={{fontSize: "0.8em"}}> min</span>
 							</div>
 							<div className="subtitle-style">walk time</div>

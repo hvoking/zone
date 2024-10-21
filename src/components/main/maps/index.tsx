@@ -7,6 +7,7 @@ import { Controllers } from './controllers';
 import { Wrapper } from './wrapper'
 import { Tiles } from './tiles';
 import { Circle } from './circle';
+import { Mask } from './mask';
 
 // Layers imports
 import { Layers } from './layers';
@@ -82,6 +83,7 @@ export const Maps = () => {
         <Controllers/>
         <Avatar/>
         <Tiles/>
+        <Mask/>
       </Map>
 
     </Wrapper>

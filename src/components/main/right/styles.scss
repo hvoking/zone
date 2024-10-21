@@ -5,7 +5,8 @@
 }
 .right-items-wrapper {
 	display: grid;
-	height: calc(100vh - 80px);
+	height: calc(100vh - 85px);
 	grid-template-rows: 2fr min-content 3fr;
 	grid-gap: 5px;
+	padding-top: 5px;
 }

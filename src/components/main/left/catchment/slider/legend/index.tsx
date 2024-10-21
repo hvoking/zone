@@ -1,5 +1,6 @@
 export const Legend = ({ xScale, circleRadius, currentPosition }: any) => {
 	const legendWidth = 16;
+	
 	return (
 		<>	
 			<polygon 
@@ -29,7 +30,7 @@ export const Legend = ({ xScale, circleRadius, currentPosition }: any) => {
 				textAnchor="middle"
 				fontSize="0.8em"
 			>
-				{Math.round(currentPosition * 100 * 10) / 10}
+				{Math.round(currentPosition * 10) / 10}
 			</text>
 		</>
 	)
