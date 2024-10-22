@@ -1,7 +1,7 @@
 // Context imports
-import { useMask } from '../../../context/mask';
-import { useParcelAreas } from '../../../context/areas/parcel';
-import { useBuiltAreas } from '../../../context/areas/built';
+import { useMask } from '../../../context/maps/mask';
+import { useParcelAreas } from '../../../context/filters/areas/parcel';
+import { useBuiltAreas } from '../../../context/filters/areas/built';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';

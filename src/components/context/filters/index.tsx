@@ -5,6 +5,8 @@ import { VectorsProvider } from './vectors';
 import { BuildingProvider } from './building';
 import { VisibilityProvider } from './visibility';
 import { StyleSheetProvider } from './stylesheet';
+import { AreasProvider } from './areas';
+import { CircleProvider } from './circle';
 
 export const FiltersProvider = ({children}: any) => {
   return (
@@ -14,7 +16,11 @@ export const FiltersProvider = ({children}: any) => {
     <ModuleProvider>
     <BuildingProvider>
     <StyleSheetProvider>
+    <AreasProvider>
+    <CircleProvider>
       {children}
+    </CircleProvider>
+    </AreasProvider>
     </StyleSheetProvider>
     </BuildingProvider>
     </ModuleProvider>

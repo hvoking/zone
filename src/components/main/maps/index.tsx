@@ -14,8 +14,8 @@ import { Layers } from './layers';
 
 // Context imports
 import { useGeo } from '../../context/filters/geo';
-import { useEvents } from '../../context/events';
-import { useCircle } from '../../context/circle';
+import { useCircle } from '../../context/filters/circle';
+import { useEvents } from '../../context/maps/events';
 
 // Third-party imports
 import { Map } from 'react-map-gl';

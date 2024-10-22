@@ -5,7 +5,7 @@ import { useContext, createContext } from 'react';
 import { maxOffsetGeom, nearestPoints, linesToPolygon } from './helpers';
 
 // Context imports
-import { useEnvelopApi } from '../../api/parcel/envelop';
+import { useEnvelopApi } from '../../../api/parcel/envelop';
 
 // Third party imports
 // @ts-ignore

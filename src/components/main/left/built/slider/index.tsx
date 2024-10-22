@@ -7,7 +7,7 @@ import { Handler } from './handler';
 import { Wrapper } from './wrapper';
 
 // Context imports
-import { useBuiltAreas } from '../../../../context/areas/built';
+import { useBuiltAreas } from '../../../../context/filters/areas/built';
 import { useConstructionSliderSizes } from '../../../../context/sizes/slider/construction';
 
 import * as d3 from 'd3';
