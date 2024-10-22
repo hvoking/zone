@@ -1,75 +1,80 @@
-// Context imports
-import { useMask } from '../../../context/maps/mask';
-import { useParcelAreas } from '../../../context/filters/areas/parcel';
-import { useBuiltAreas } from '../../../context/filters/areas/built';
-
-// Third party imports
 import { Source, Layer } from 'react-map-gl';
-
-const getColor = (item: any, opacity: any) => {
-	const { r, g, b, a } = item;
-	const color = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`;
-	return color
-}
+import { useMask } from '../../../context/maps/mask';
+import * as turf from '@turf/turf';
+import { useMemo } from 'react';
 
 export const Mask = () => {
-	const { maskProperties } = useMask();
-	const { parcelAreaFrom, parcelAreaTo } = useParcelAreas();
-	const { builtAreaFrom, builtAreaTo } = useBuiltAreas();
+  const { maskProperties } = useMask();
 
-	if (!maskProperties) return <></>
+  // Memoize geometry processing to minimize re-renders
+  const geoJsonData = useMemo(() => {
+    if (!maskProperties || maskProperties.length === 0) return null; // Handle empty or undefined case
 
-	// Filter by fill color
-	const features = maskProperties.filter((item: any) => {
-        const stringList = Object.keys(item.layer.paint);
-        return stringList.includes("fill-color");
-    });
+    const baseHeight = 0; // Base of the extrusion
+    const buildingHeight = 30; // Arbitrary height for the extruded building
 
-	const updatedFeatures = features.map((item: any) => {
-		const area = item.properties.area_carto;
-
-		const constructedArea = item.properties.constructed_area
-		const constructedAreaList = constructedArea ? constructedArea.replace(/[{}]/g, '').split(',') : [];
-		const sumConstructedArea = constructedAreaList.reduce((total: any, num: any) => total + parseFloat(num), 0);
-		
-		const opacity = 
-			area > parcelAreaFrom && 
-			area < parcelAreaTo &&
-			sumConstructedArea >= builtAreaFrom && 
-			sumConstructedArea <= builtAreaTo
-			? 1 : 0;
-
-		const currentColor = getColor(item.layer.paint["fill-color"], opacity);
-
-		return ({
-			type: "Feature",
-			geometry: item.geometry,
-			properties: {
-				...item.properties, 
-				'fill-color': currentColor
-			}
-		})
-	});
-		
-	const geoJsonData: any = {
-        "type": "FeatureCollection",
-        "features": updatedFeatures
+    // Function to offset the geometry inside
+    const offsetGeometryInside = (geometry: any, offset: number) => {
+      if (!geometry || !geometry.coordinates) return null; // Additional safeguard for geometry
+      const polygon: any = turf.polygon(geometry.coordinates);
+      const offsettedGeom = turf.buffer(polygon, -offset, { units: 'meters' });
+      return offsettedGeom;
     };
 
-	return (
-		<Source id="polygon-data" type="geojson" data={geoJsonData}>
-	        <Layer
-	          id="extruded-polygons"
-	          type="fill-extrusion"
-	          paint={{
-	            'fill-extrusion-color': ['get', 'fill-color'],
-	            'fill-extrusion-height': ['get', 'geometria'],
-	            'fill-extrusion-base': 0,
-	            'fill-extrusion-opacity': 0.5
-	          }}
-	        />
-	      </Source>
-	)
-}
+    // Add third coordinate (height) to the polygon's coordinates
+    const addThirdCoordinate = (coordinates: any, height: number) => {
+      if (!coordinates) return null; // Ensure coordinates exist
+      return coordinates.map((polygon: any) =>
+        polygon.map((coord: any) => [...coord, height])
+      );
+    };
 
-Mask.displayName="Mask"
+    // Process all valid maskProperties and create extruded geometries for each
+    const features = maskProperties
+      .filter((maskProp: any) => maskProp && maskProp.geometry && maskProp.geometry.coordinates) // Ensure maskProp, geometry, and coordinates exist
+      .map((maskProp: any) => {
+        const offsettedGeometry: any = offsetGeometryInside(maskProp.geometry, 5); // Example offset
+        if (!offsettedGeometry || !offsettedGeometry.geometry) return null; // Ensure offsetted geometry is valid
+        const extrudedGeometry = addThirdCoordinate(offsettedGeometry.geometry.coordinates, buildingHeight);
+
+        return {
+          type: 'Feature',
+          geometry: {
+            type: 'Polygon',
+            coordinates: extrudedGeometry,
+          },
+          properties: {
+            height: buildingHeight,
+          },
+        };
+      })
+      .filter((feature: any) => feature !== null); // Filter out invalid features
+
+    // Return null if no valid features were found
+    if (features.length === 0) return null;
+
+    return {
+      type: 'FeatureCollection',
+      features, // All extruded geometries
+    };
+  }, [maskProperties]); // Recalculate only when maskProperties change
+
+  if (!geoJsonData) return null; // Early return if no valid data
+
+  return (
+    <Source id="mask-buildings" type="geojson" data={geoJsonData}>
+      <Layer
+        id="extruded-buildings"
+        type="fill-extrusion"
+        paint={{
+          'fill-extrusion-color': 'rgba(255, 0, 0, 0.8)', // Red color for the buildings
+          'fill-extrusion-height': ['get', 'height'], // Set extrusion height dynamically
+          'fill-extrusion-base': 0, // Base height of 0 for all buildings
+          'fill-extrusion-opacity': 0.8,
+        }}
+      />
+    </Source>
+  );
+};
+
+Mask.displayName = 'Mask';
