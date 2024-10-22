@@ -2,7 +2,7 @@
 import { SVGWrapper } from './svg';
 
 // Context imports
-import { useModuleDimensions } from '../../../../../context/filters/dimensions/module';
+import { useModule } from '../../../../../context/filters/module';
 import { useSideElevationSizes } from '../../../../../context/sizes/right/elevation/side';
 import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
@@ -10,7 +10,7 @@ import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 import * as d3 from 'd3';
 
 export const SideBlocks = ({ sideBlocks, maxLength }: any) => {
-	const { apartmentSide } = useModuleDimensions();
+	const { apartmentSide } = useModule();
 	const { innerWidth, innerHeight } = useSideElevationSizes();
 	const { linesColor, linesWidth, fillColor } = useStyleSheet();
 

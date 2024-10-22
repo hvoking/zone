@@ -5,14 +5,14 @@ import './styles.scss';
 
 // Context imports
 import { useBuildingApi } from '../../../../context/api/parcel/building';
-import { useModuleDimensions } from '../../../../context/filters/dimensions/module';
+import { useModule } from '../../../../context/filters/module';
 
 // Third-party imports
 import * as d3 from 'd3';
 
 export const Elevation = () => {
 	const { buildingData } = useBuildingApi();
-	const { apartmentFront, apartmentSide } = useModuleDimensions();
+	const { apartmentFront, apartmentSide } = useModule();
 
 	if (!buildingData) return <></>
 

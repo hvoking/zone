@@ -8,7 +8,7 @@ import { usePerspectiveSizes } from '../../../../context/sizes/right/perspective
 import { useVectors } from '../../../../context/filters/vectors';
 import { useBuilding } from '../../../../context/filters/building';
 import { useBuildingApi } from '../../../../context/api/parcel/building';
-import { useModuleDimensions } from '../../../../context/filters/dimensions/module';
+import { useModule } from '../../../../context/filters/module';
 
 // Third-party imports
 import * as d3 from 'd3';
@@ -18,7 +18,7 @@ export const Perspective = () => {
 	const { iLeft, jLeft, iRight, jRight } = useVectors();
 	const { undergroundHeight } = useBuilding();
 	const { buildingData } = useBuildingApi();
-	const { apartmentFront, apartmentSide } = useModuleDimensions();
+	const { apartmentFront, apartmentSide } = useModule();
 
 	if (!buildingData) return <></>
 

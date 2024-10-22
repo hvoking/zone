@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useModuleDimensions } from '../../../filters/dimensions/module';
+import { useModule } from '../../../filters/module';
 import { useBuilding } from '../../../filters/building';
 import { useZoneApi } from '../zone';
 import { useSiteApi } from '../site';
@@ -16,7 +16,7 @@ export const useBuildingApi = () => {
 }
 
 export const BuildingApiProvider = ({children}: any) => {
-  const { apartmentSide, apartmentFront, apartmentHeight } = useModuleDimensions();
+  const { apartmentSide, apartmentFront, apartmentHeight } = useModule();
   const { garages } = useBuilding();
   const { zoneData } = useZoneApi();
   const { siteData } = useSiteApi();

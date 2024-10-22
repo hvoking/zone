@@ -1,11 +1,11 @@
 // Context imports
 import { useVectors } from '../../../../../context/filters/vectors';
-import { useModuleDimensions } from '../../../../../context/filters/dimensions/module';
+import { useModule } from '../../../../../context/filters/module';
 import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
 export const Block = ({ xBottom, yBottom, xScale, yScale, item }: any) => {
 	const { iLeft, jLeft, iRight, jRight } = useVectors();
-	const { apartmentSide, apartmentFront } = useModuleDimensions();
+	const { apartmentSide, apartmentFront } = useModule();
 	const { linesColor, linesWidth } = useStyleSheet();
 
 	const xLeft = xBottom + iLeft * xScale(apartmentFront);

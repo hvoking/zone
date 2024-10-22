@@ -2,7 +2,7 @@
 import { SVGWrapper } from './svg';
 
 // Context imports
-import { useModuleDimensions } from '../../../../../context/filters/dimensions/module';
+import { useModule } from '../../../../../context/filters/module';
 import { useFrontElevationSizes } from '../../../../../context/sizes/right/elevation/front';
 import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 
@@ -10,7 +10,7 @@ import { useStyleSheet } from '../../../../../context/filters/stylesheet';
 import * as d3 from 'd3';
 
 export const FrontBlocks = ({ frontBlocks, maxLength }: any) => {
-	const { apartmentFront } = useModuleDimensions();
+	const { apartmentFront } = useModule();
 	const { innerHeight, innerWidth } = useFrontElevationSizes();
 	const { linesColor, linesWidth, fillColor } = useStyleSheet();
 

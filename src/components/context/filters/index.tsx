@@ -1,6 +1,6 @@
 // App imports
 import { GeoProvider } from './geo';
-import { DimensionsProvider } from './dimensions';
+import { ModuleProvider } from './module';
 import { VectorsProvider } from './vectors';
 import { BuildingProvider } from './building';
 import { VisibilityProvider } from './visibility';
@@ -11,13 +11,13 @@ export const FiltersProvider = ({children}: any) => {
     <VisibilityProvider>
     <VectorsProvider>
     <GeoProvider>
-    <DimensionsProvider>
+    <ModuleProvider>
     <BuildingProvider>
     <StyleSheetProvider>
       {children}
     </StyleSheetProvider>
     </BuildingProvider>
-    </DimensionsProvider>
+    </ModuleProvider>
     </GeoProvider>
     </VectorsProvider>
     </VisibilityProvider>

@@ -1,14 +1,14 @@
 import { useState, useContext, createContext } from 'react';
 
-const ModuleDimensionsContext: React.Context<any> = createContext(null)
+const ModuleContext: React.Context<any> = createContext(null)
 
-export const useModuleDimensions = () => {
+export const useModule = () => {
 	return (
-		useContext(ModuleDimensionsContext)
+		useContext(ModuleContext)
 	)
 }
 
-export const ModuleDimensionsProvider = ({children}: any) => {
+export const ModuleProvider = ({children}: any) => {
 	const [ apartmentFront, setApartmentFront ] = useState(8);
 	const [ apartmentSide, setApartmentSide ] = useState(8);
 	const [ apartmentHeight, setApartmentHeight ] = useState(3);
@@ -18,7 +18,7 @@ export const ModuleDimensionsProvider = ({children}: any) => {
 	const [ apartmentHeightPosition, setApartmentHeightPosition ] = useState(3);
 
 	return (
-		<ModuleDimensionsContext.Provider value={{
+		<ModuleContext.Provider value={{
 			apartmentFront, setApartmentFront,
 			apartmentSide, setApartmentSide,
 			apartmentHeight, setApartmentHeight,
@@ -27,8 +27,8 @@ export const ModuleDimensionsProvider = ({children}: any) => {
 			apartmentHeightPosition, setApartmentHeightPosition,
 		}}>
 			{children}
-		</ModuleDimensionsContext.Provider>
+		</ModuleContext.Provider>
 	)
 }
 
-ModuleDimensionsContext.displayName = "ModuleDimensionsContext";
+ModuleContext.displayName = "ModuleContext";
