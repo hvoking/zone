@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
-const ParcelDimensionsContext: React.Context<any> = createContext(null)
+const ParcelAreasContext: React.Context<any> = createContext(null)
 
-export const useParcelDimensions = () => {
+export const useParcelAreas = () => {
 	return (
-		useContext(ParcelDimensionsContext)
+		useContext(ParcelAreasContext)
 	)
 }
 
-export const ParcelDimensionsProvider = ({children}: any) => {
+export const ParcelAreasProvider = ({children}: any) => {
 	const [ parcelAreaFrom, setParcelAreaFrom ] = useState(100);
 	const [ parcelAreaTo, setParcelAreaTo ] = useState(1200);
 
@@ -32,7 +32,7 @@ export const ParcelDimensionsProvider = ({children}: any) => {
   	}, [leftPosition]);
 
 	return (
-		<ParcelDimensionsContext.Provider value={{
+		<ParcelAreasContext.Provider value={{
 			parcelAreaFrom, setParcelAreaFrom,
 			parcelAreaTo, setParcelAreaTo,
 			leftPosition, setLeftPosition,
@@ -40,8 +40,8 @@ export const ParcelDimensionsProvider = ({children}: any) => {
 			minBound, maxBound, setMaxBound,
 		}}>
 			{children}
-		</ParcelDimensionsContext.Provider>
+		</ParcelAreasContext.Provider>
 	)
 }
 
-ParcelDimensionsContext.displayName = "ParcelDimensionsContext";
+ParcelAreasContext.displayName = "ParcelAreasContext";

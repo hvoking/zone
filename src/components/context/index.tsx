@@ -1,29 +1,35 @@
 // Context imports
-import { MapsProvider } from './maps';
 import { FiltersProvider } from './filters';
 import { SizesProvider } from './sizes';
 import { ApiProvider } from './api';
 import { StylesProvider } from './styles';
-import { DimensionsProvider } from './dimensions';
+import { AreasProvider } from './areas';
 import { CircleProvider } from './circle';
+import { LayersProvider } from './layers';
+import { EventsProvider } from './events';
+import { MaskProvider } from './mask';
 
 export const MainProvider = ({ children }: any) => {
 	return (
-		<DimensionsProvider>
 		<FiltersProvider>
+		<AreasProvider>
 		<CircleProvider>
 		<ApiProvider>
 		<SizesProvider>
-		<MapsProvider>
+		<LayersProvider>
+		<EventsProvider>
+		<MaskProvider>
 		<StylesProvider>
 			{children}
 		</StylesProvider>
-		</MapsProvider>
+		</MaskProvider>
+		</EventsProvider>
+		</LayersProvider>
 		</SizesProvider>
 		</ApiProvider>
 		</CircleProvider>
+		</AreasProvider>
 		</FiltersProvider>
-		</DimensionsProvider>
 	)
 }
 

@@ -2,8 +2,8 @@
 import { useContext, createContext } from 'react';
 
 // App imports
-import { useParcelsCurvesApi } from '../../../api/curves/parcels';
-import { useVisibility } from '../../../filters/visibility';
+import { useParcelsCurvesApi } from '../../api/curves/parcels';
+import { useVisibility } from '../../filters/visibility';
 
 // Third-party imports
 // @ts-ignore

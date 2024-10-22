@@ -1,7 +1,7 @@
 // Context imports
-import { useMask } from '../../../context/maps/mask';
-import { useParcelDimensions } from '../../../context/dimensions/parcel';
-import { useBuiltDimensions } from '../../../context/dimensions/built';
+import { useMask } from '../../../context/mask';
+import { useParcelAreas } from '../../../context/areas/parcel';
+import { useBuiltAreas } from '../../../context/areas/built';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
@@ -14,8 +14,8 @@ const getColor = (item: any, opacity: any) => {
 
 export const Mask = () => {
 	const { maskProperties } = useMask();
-	const { parcelAreaFrom, parcelAreaTo } = useParcelDimensions();
-	const { builtAreaFrom, builtAreaTo } = useBuiltDimensions();
+	const { parcelAreaFrom, parcelAreaTo } = useParcelAreas();
+	const { builtAreaFrom, builtAreaTo } = useBuiltAreas();
 
 	if (!maskProperties) return <></>
 

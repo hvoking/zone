@@ -14,7 +14,7 @@ import { Layers } from './layers';
 
 // Context imports
 import { useGeo } from '../../context/filters/geo';
-import { useEvents } from '../../context/maps/events';
+import { useEvents } from '../../context/events';
 import { useCircle } from '../../context/circle';
 
 // Third-party imports

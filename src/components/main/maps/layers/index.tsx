@@ -1,8 +1,8 @@
 // Layer imports
-import { useEnvelop } from '../../../context/maps/layers/envelop';
-import { useBuildingLayer } from '../../../context/maps/layers/building';
-import { useCurves } from '../../../context/maps/layers/curves';
-import { useDrain } from '../../../context/maps/layers/drain';
+import { useEnvelop } from '../../../context/layers/envelop';
+import { useBuildingLayer } from '../../../context/layers/building';
+import { useCurves } from '../../../context/layers/curves';
+import { useDrain } from '../../../context/layers/drain';
 
 // Third-party imports
 import { useControl } from 'react-map-gl';

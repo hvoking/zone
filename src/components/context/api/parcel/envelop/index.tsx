@@ -19,7 +19,7 @@ export const EnvelopApiProvider = ({children}: any) => {
   const [ envelopData, setEnvelopData ] = useState<any>(data);
 
   return (
-		<EnvelopApiContext.Provider value={{ envelopData }}>
+		<EnvelopApiContext.Provider value={{ envelopData, setEnvelopData }}>
 			{children}
 		</EnvelopApiContext.Provider>
 	)

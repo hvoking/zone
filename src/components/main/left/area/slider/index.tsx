@@ -7,14 +7,14 @@ import { Handler } from './handler';
 import { Wrapper } from './wrapper';
 
 // Context imports
-import { useParcelDimensions } from '../../../../context/dimensions/parcel';
+import { useParcelAreas } from '../../../../context/areas/parcel';
 import { useParcelSliderSizes } from '../../../../context/sizes/slider/parcel';
 
 import * as d3 from 'd3';
 
 export const Slider = ({ activeForeground, setActiveForeground }: any) => {
   const { innerWidth, innerHeight } = useParcelSliderSizes();
-  const { minBound, maxBound, leftPosition, setLeftPosition, rightPosition, setRightPosition } = useParcelDimensions();
+  const { minBound, maxBound, leftPosition, setLeftPosition, rightPosition, setRightPosition } = useParcelAreas();
 
   const circleRadius = innerHeight / 6;
   const offset = 20;

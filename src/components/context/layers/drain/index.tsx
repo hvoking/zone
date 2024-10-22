@@ -7,8 +7,8 @@ import { useContext, createContext } from 'react';
 import { PathLayer } from '@deck.gl/layers';
 
 // Context imports
-import { useDrainApi } from '../../../api/drain';
-import { useVisibility } from '../../../filters/visibility';
+import { useDrainApi } from '../../api/drain';
+import { useVisibility } from '../../filters/visibility';
 
 const DrainPathContext: React.Context<any> = createContext(null)
 

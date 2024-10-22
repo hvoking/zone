@@ -1,5 +1,5 @@
 // Context imports
-import { useMask } from '../../../../../context/maps/mask';
+import { useMask } from '../../../../../context/mask';
 
 // Third party imports
 import * as d3 from 'd3';

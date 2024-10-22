@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
-const BuiltDimensionsContext: React.Context<any> = createContext(null)
+const BuiltAreasContext: React.Context<any> = createContext(null)
 
-export const useBuiltDimensions = () => {
+export const useBuiltAreas = () => {
 	return (
-		useContext(BuiltDimensionsContext)
+		useContext(BuiltAreasContext)
 	)
 }
 
-export const BuiltDimensionsProvider = ({children}: any) => {
+export const BuiltAreasProvider = ({children}: any) => {
 	const [ builtAreaFrom, setBuiltAreaFrom ] = useState(0);
 	const [ builtAreaTo, setBuiltAreaTo ] = useState(600);
 
@@ -32,7 +32,7 @@ export const BuiltDimensionsProvider = ({children}: any) => {
   	}, [leftPosition]);
 
 	return (
-		<BuiltDimensionsContext.Provider value={{
+		<BuiltAreasContext.Provider value={{
 			builtAreaFrom, setBuiltAreaFrom,
 			builtAreaTo, setBuiltAreaTo,
 			leftPosition, setLeftPosition,
@@ -40,8 +40,8 @@ export const BuiltDimensionsProvider = ({children}: any) => {
 			minBound, maxBound, setMaxBound,
 		}}>
 			{children}
-		</BuiltDimensionsContext.Provider>
+		</BuiltAreasContext.Provider>
 	)
 }
 
-BuiltDimensionsContext.displayName = "BuiltDimensionsContext";
+BuiltAreasContext.displayName = "BuiltAreasContext";
