@@ -21,8 +21,21 @@ export const StylesProvider = ({children}: any) => {
 	    return receivedData;
 	}
 
+	const getTilesUrl = (schema: any, table: any) => {
+		const url = `
+	    	${process.env.REACT_APP_API_URL}
+	    	/tiles
+	    	?table_schema=${schema}
+	    	&table_name=${table}
+	    	&x={x}
+	    	&y={y}
+	    	&z={z}
+	    `.replace(/\s/g, '');
+	    return url
+	}
+
 	return (
-		<StylesContext.Provider value={{ fetchData }}>
+		<StylesContext.Provider value={{ fetchData, getTilesUrl }}>
 			{children}
 		</StylesContext.Provider>
 	)
