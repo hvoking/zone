@@ -23,7 +23,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 export const Maps = () => {
   const { mapRef, basemap, viewport, setPlaceCoordinates } = useGeo();
-  const { isDragging, onDragStart, onMouseMove, onDragEnd } = useEvents();
+  const { isDragging, onDragStart, onMouseMove, onDragEnd, onClick } = useEvents();
   const { circleGeometry } = useCircle();
 
   const onDblClick = useCallback((e: any) => {
@@ -77,6 +77,7 @@ export const Maps = () => {
         onTouchMove={onMouseMove}
         onTouchEnd={onDragEnd}
         dragPan={!isDragging}
+        onClick={onClick}
       >
         <Layers/>
         <Circle/>

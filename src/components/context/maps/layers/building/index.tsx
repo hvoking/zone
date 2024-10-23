@@ -11,13 +11,13 @@ import { useBuildingApi } from '../../../api/parcel/building';
 import { GeoJsonLayer } from 'deck.gl';
 import * as turf from '@turf/turf';
 
-const BuildingLayerContext: React.Context<any> = createContext(null)
+const BuildingContext: React.Context<any> = createContext(null)
 
-export const useBuildingLayer = () => {
-	return (useContext(BuildingLayerContext))
+export const useBuilding = () => {
+	return (useContext(BuildingContext))
 }
 
-export const BuildingLayerProvider = ({children}: any) => {
+export const BuildingProvider = ({children}: any) => {
 	const { envelopData } = useEnvelopApi();
 	const { buildingData } = useBuildingApi();
 
@@ -33,15 +33,18 @@ export const BuildingLayerProvider = ({children}: any) => {
 	}
 
 	const addThirdCoordinate = (obj: any, height: any) => {
-		const filterGeom = obj.geometry && 
-			obj.geometry.coordinates.length === 1 ?
-			obj.geometry.coordinates :
-			obj.geometry.coordinates[0];
+		if (obj) {
+			const filterGeom = obj.geometry && 
+				obj.geometry.coordinates.length === 1 ?
+				obj.geometry.coordinates :
+				obj.geometry.coordinates[0];
 
-        obj.geometry && filterGeom.forEach((polygon: any) => {
-        	polygon.forEach((coord: any) => {coord.push(parseInt(height))});
-        });
-	    return obj;
+	        obj.geometry && filterGeom.forEach((polygon: any) => {
+	        	polygon.forEach((coord: any) => {coord.push(parseInt(height))});
+	        });
+		    return obj;
+	    }
+	    return null;
 	}
 
 	const createBuilding = (height: any, lastHeight: any) => {
@@ -66,10 +69,10 @@ export const BuildingLayerProvider = ({children}: any) => {
 	})
 
 	return (
-		<BuildingLayerContext.Provider value={{ buildingLayer }}>
+		<BuildingContext.Provider value={{ buildingLayer }}>
 			{children}
-		</BuildingLayerContext.Provider>
+		</BuildingContext.Provider>
 	)
 }
 
-BuildingLayerContext.displayName = "BuildingLayerContext";
+BuildingContext.displayName = "BuildingContext";

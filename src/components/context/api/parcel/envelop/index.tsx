@@ -1,9 +1,7 @@
 // React imports
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useContext, createContext } from 'react';
 
-// Context imports
-import { useGeo } from '../../../filters/geo';
-
+// App imports
 import { data } from './data';
 
 const EnvelopApiContext: React.Context<any> = createContext(null);
@@ -15,7 +13,6 @@ export const useEnvelopApi = () => {
 }
 
 export const EnvelopApiProvider = ({children}: any) => {
-  const { parcelId } = useGeo();
   const [ envelopData, setEnvelopData ] = useState<any>(data);
 
   return (

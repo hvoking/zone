@@ -8,11 +8,14 @@ export const maxOffsetGeom = (baseGeom: any) => {
     let offset = 0;
     let previousGeom = null;
 
-    if (coordinates[0][0].length === 3) {height = coordinates[0][0][2]}
+    if (coordinates && coordinates[0][0].length === 3) {
+        height = coordinates[0][0][2]
+    }
 
     while (offsettedGeom && offsettedGeom.length > 0) {
         const offsetGeomLength = offsettedGeom.length;
         const previousGeomLength = previousGeom && previousGeom.length;
+
         if (offsetGeomLength < previousGeomLength) {
             break
         }
@@ -22,7 +25,7 @@ export const maxOffsetGeom = (baseGeom: any) => {
         offsettedGeom = buffer?.geometry.coordinates[0];
     }
     height += offset * 6;
-    previousGeom.map((item: any, index: any) => previousGeom[index] = [...item, height]);
+    previousGeom && previousGeom.map((item: any, index: any) => previousGeom[index] = [...item, height]);
     return previousGeom
 }
 

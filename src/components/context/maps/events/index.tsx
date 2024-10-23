@@ -3,6 +3,7 @@ import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
 import { useGeo } from '../../filters/geo';
+import { useEnvelopApi } from '../../api/parcel/envelop';
 
 const EventsContext: React.Context<any> = createContext(null);
 
@@ -18,8 +19,9 @@ export const EventsProvider = ({children}: any) => {
 		const [ isDragging, setIsDragging ] = useState(false);
 		const [ dragOffset, setDragOffset ] = useState({ x: 0, y: 0 });
 
-		const isClickInsideCircle = useCallback(
-	        (point: { x: number, y: number }) => {
+		const { setEnvelopData } = useEnvelopApi();
+
+		const isClickInsideCircle = useCallback((point: { x: number, y: number }) => {
 	            const features = mapRef.current?.queryRenderedFeatures(point, {
 	                layers: ['layer-mask']
 	            });
@@ -60,12 +62,25 @@ export const EventsProvider = ({children}: any) => {
 	        setIsDragging(false);
 	    }, []);
 
+   		const onClick = useCallback((event: any) => {
+            const features = mapRef.current?.queryRenderedFeatures(event.point, {
+                layers: ["fill Single symbol"]
+            });
+            const multiPolygon = {
+            	"type": "MultiPolygon",
+            	"coordinates": features.map((item: any) => item.geometry.coordinates)
+            }
+
+            features.length > 0 && setEnvelopData(multiPolygon);
+        },[mapRef]);
+
 	return (
 		<EventsContext.Provider value={{
 			isDragging,
 			onDragStart,
 			onMouseMove,
 			onDragEnd,
+			onClick
 		}}>
 			{children}
 		</EventsContext.Provider>

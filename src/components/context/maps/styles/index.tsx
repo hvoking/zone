@@ -1,5 +1,5 @@
 // React imports
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useContext, createContext } from 'react';
 
 const StylesContext: React.Context<any> = createContext(null)
 
@@ -10,26 +10,19 @@ export const useStyles = () => {
 }
 
 export const StylesProvider = ({children}: any) => {
-	const [ styleData, setStyleData ] = useState<any[]>([]);
-	const [ styleName, setStyleName ] = useState("parcels");
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const tempUrl = `
-		    	${process.env.REACT_APP_API_URL}/
-		    	style/
-		    	${styleName}
-		    `
-		  	const url = tempUrl.replace(/\s/g, '');
-		  	const res = await fetch(url);
-		    const receivedData = await res.json();
-		    setStyleData(receivedData);
-		}
-		fetchData();
-	}, [ styleName ])
+	const fetchData = async (styleName: any) => {
+		const url = `
+	    	${process.env.REACT_APP_API_URL}/
+	    	style/
+	    	${styleName}
+	    `.replace(/\s/g, '');
+	  	const res = await fetch(url);
+	    const receivedData = await res.json();
+	    return receivedData;
+	}
 
 	return (
-		<StylesContext.Provider value={{ styleData, styleName, setStyleName }}>
+		<StylesContext.Provider value={{ fetchData }}>
 			{children}
 		</StylesContext.Provider>
 	)

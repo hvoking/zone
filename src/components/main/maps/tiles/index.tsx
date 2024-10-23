@@ -1,3 +1,5 @@
+// React imports
+import { useState, useEffect } from 'react';
 // Context imports
 import { useStyles } from '../../../context/maps/styles';
 
@@ -5,18 +7,26 @@ import { useStyles } from '../../../context/maps/styles';
 import { Source, Layer } from 'react-map-gl';
 
 export const Tiles = () => {
-	const { styleData, styleName } = useStyles();
+	const { fetchData } = useStyles();
+	const [ styleData, setStyleData ] = useState<any[]>([]);
 
-	const tempUrl = `
+	const tilesUrl = `
     	${process.env.REACT_APP_API_URL}
     	/tiles
     	?table_schema=layers
-    	&table_name=${styleName}
+    	&table_name=parcels
     	&x={x}
     	&y={y}
     	&z={z}
-    `
-	const url = tempUrl.replace(/\s/g, '');
+    `.replace(/\s/g, '');
+
+    useEffect(() => {
+    	const loadData = async () => {
+			const data = await fetchData('parcels');
+			setStyleData(data);
+		}
+		loadData();
+	}, []);
 
 	const layers = styleData.map((style: any, index: number) => {
 		return (
@@ -28,7 +38,7 @@ export const Tiles = () => {
 		<Source 
 			id="raster-style" 
 			type="vector" 
-			tiles={[ url ]}
+			tiles={[ tilesUrl ]}
 		>
 			{layers}
 		</Source>

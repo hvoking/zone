@@ -1,23 +1,20 @@
 // App imports
-import { CircleProvider } from './circle';
 import { EnvelopProvider } from './envelop';
-import { BuildingLayerProvider } from './building';
+import { BuildingProvider } from './building';
 import { CurvesProvider } from './curves';
 import { DrainProvider } from './drain';
 
 export const LayersProvider = ({children}: any) => {
   return (
-    <CircleProvider>
     <EnvelopProvider>
-    <BuildingLayerProvider>
+    <BuildingProvider>
     <CurvesProvider>
     <DrainProvider>
       {children}
     </DrainProvider>
     </CurvesProvider>
-    </BuildingLayerProvider>
+    </BuildingProvider>
     </EnvelopProvider>
-    </CircleProvider>
   )
 }
 

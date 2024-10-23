@@ -28,27 +28,28 @@ export const EnvelopProvider = ({children}: any) => {
 
 	if (!envelopData) return <></>
 
-	const envelopLines = [];
-	const envelopPolygons = [];
-	const baseGeom = envelopData.coordinates;
-	
-	let topGeom = maxOffsetGeom(baseGeom);
-	let basePoints = baseGeom[0][0];
+	const { coordinates } = envelopData;		
+	let topGeom = maxOffsetGeom(coordinates);
+
+	let basePoints = coordinates[0][0];
+
+	const lines = [];
+	const polygons = [];
 
 	while (topGeom.length > 1) {
-	    const lines = nearestPoints([[basePoints]], topGeom);
-		const polygons = linesToPolygon(lines);
-		basePoints = lines.map((item: any) => item[1]);
-		lines.map((item: any, index: number) => lines[index] = turf.lineString(item));
+	    const nearest = nearestPoints([[basePoints]], topGeom);
+		const newPolygons = linesToPolygon(nearest);
 
-		envelopLines.push(lines);
-		envelopPolygons.push(polygons);
+		basePoints = nearest.map((item: any) => item[1]);
+
+		lines.push(nearest.map((item: any) => turf.lineString(item)));
+      	polygons.push(newPolygons);
 
 		topGeom = maxOffsetGeom([[topGeom]]);
 	}
 	
 	const envelopLayer = [
-		envelopPolygons.map((item: any, index: any) => {
+		polygons.map((item: any, index: any) => {
 			return new GeoJsonLayer({
 				id: `envelop-polygons-${index}`,
 				data: turf.multiPolygon(item),
@@ -59,7 +60,7 @@ export const EnvelopProvider = ({children}: any) => {
 		})
 	]
 	const envelopLinesLayer = [
-		envelopLines.map((item: any, index: any) => {
+		lines.map((item: any, index: any) => {
 			return new GeoJsonLayer({
 				id: `envelop-lines-${index}`,
 				data: turf.featureCollection(item),
