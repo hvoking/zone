@@ -66,7 +66,7 @@ export const Avatar = () => {
 
 	useEffect(() => {
         mapRef.current?.flyTo({
-            center: [marker.longitude, marker.latitude],
+            center: [ marker.longitude, marker.latitude ],
             essential: true,
             duration: 300,
         });

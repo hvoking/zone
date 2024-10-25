@@ -27,32 +27,42 @@ export const Mask = () => {
   const geoJsonData = useMemo(() => {
     if (!maskProperties || maskProperties.length === 0) return null;
 
-    const offsetDistance = -5;
+    const offsetDistance = -6;
+    const maxIterations = 10;
 
-    const filterMask = maskProperties.filter((maskProp: any) => maskProp && maskProp.geometry && maskProp.geometry.coordinates)
-    
-    const features = filterMask.map((maskProp: any) => {
-        const offsettedGeometry: any = turf.buffer(maskProp.geometry, offsetDistance, { units: 'meters' });
-    
-        if (!offsettedGeometry || !offsettedGeometry.geometry) return null;
+    const features = maskProperties.flatMap((maskProp: any) => {
+      const baseGeometries = [];
+      let currentGeometry = maskProp.geometry;
+      let totalOffsetDistance = 0;
+      for (let i = 0; i < maxIterations; i++) {
+        const nextGeometry = turf.buffer(currentGeometry, offsetDistance, { units: 'meters' });
 
-        const extrudedGeometry = offsettedGeometry.geometry.coordinates;
+        if (!nextGeometry || turf.area(nextGeometry) <= 0) {
+          break;
+        }
 
+        totalOffsetDistance += Math.abs(offsetDistance); // Accumulate the absolute distance
+
+        const height = 6 * totalOffsetDistance;
         const currentColor = hexToRgba(maskProp.properties["zone_color"], 1);
 
-        return {
+        baseGeometries.push({
           type: 'Feature',
           geometry: {
             type: 'Polygon',
-            coordinates: extrudedGeometry,
+            coordinates: nextGeometry.geometry.coordinates,
           },
           properties: {
             'zone-color': currentColor,
-            height: 10,
+            'extrusion-height': height,
           },
-        };
-      })
-      .filter((feature: any) => feature !== null);
+        });
+
+        currentGeometry = nextGeometry;
+      }
+
+      return baseGeometries;
+    });
 
     if (features.length === 0) return null;
 
@@ -60,7 +70,7 @@ export const Mask = () => {
       type: 'FeatureCollection',
       features,
     };
-  }, [ maskProperties ]);
+  }, [maskProperties]);
 
   if (!geoJsonData) return null;
 
@@ -72,7 +82,7 @@ export const Mask = () => {
         paint={{
           'fill-extrusion-color': ['get', 'zone-color'],
           'fill-extrusion-base': 2,
-          'fill-extrusion-height': 12,
+          'fill-extrusion-height': ['get', 'extrusion-height'],
           'fill-extrusion-opacity': 0.8,
         }}
       />
