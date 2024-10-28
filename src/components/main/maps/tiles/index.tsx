@@ -15,7 +15,7 @@ export const Tiles = () => {
 
     useEffect(() => {
     	const loadData = async () => {
-			const data = await fetchData(tableName);
+			const data = await fetchData('', tableName);
 			setStyleData(data);
 		}
 		loadData();

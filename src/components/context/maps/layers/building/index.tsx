@@ -26,36 +26,9 @@ export const BuildingProvider = ({children}: any) => {
   const frontBlocks = buildingData.front_blocks;
   const heights = Object.keys(frontBlocks);
 
-  const offsetGeometryInside = (multiPolygon: any, offset: any) => {
-      const polygon: any = turf.multiPolygon(multiPolygon.coordinates);
-      const offsettedGeom = turf.buffer(polygon, -offset, {units: 'meters'});
-      return offsettedGeom;
-  }
-
-  const addThirdCoordinate = (obj: any, height: any) => {
-    if (obj) {
-      const filterGeom = obj.geometry && 
-        obj.geometry.coordinates.length === 1 ?
-        obj.geometry.coordinates :
-        obj.geometry.coordinates[0];
-
-          obj.geometry && filterGeom.forEach((polygon: any) => {
-            polygon.forEach((coord: any) => {coord.push(parseInt(height))});
-          });
-        return obj;
-      }
-      return null;
-  }
-
-  const createBuilding = (height: any, lastHeight: any) => {
-    const buildingOffset = offsetGeometryInside(envelopData, height / 6);
-    const buildingWithHeight = addThirdCoordinate(buildingOffset, lastHeight);
-    return buildingWithHeight
-  }
-
   const buildingLayer = heights.map((item: any, index: any) => {
     const lastHeight: any = index > 0 ? heights[index - 1] : 0;
-    const building = createBuilding(item, lastHeight);
+    let building = turf.buffer(envelopData, -item / 6, { units: 'meters' });
 
     return new GeoJsonLayer({
       id: `lot-building-${index}`,
@@ -64,7 +37,7 @@ export const BuildingProvider = ({children}: any) => {
       getFillColor: [255, 0, 0, 120],
       parameters: { depthTest: false },
       extruded: true,
-      getElevation: item - lastHeight,
+      getElevation: Math.abs(-item - lastHeight) - lastHeight,
     })
   })
 

@@ -25,15 +25,10 @@ export const MaskProvider = ({children}: any) => {
 
 	useEffect(() => {
 		const map = mapRef.current;
-
 		if (!map) return;
-
 		const onData = (e: any) => e.tile && setActiveFeatures((prev) => !prev);
-
 	    map.on('data', onData);
-
 	    return () => {map.off('data', onData)};
-
 	}, [ mapRef.current ]);
 
 	useEffect(() => {
