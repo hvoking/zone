@@ -1,19 +1,19 @@
 // App imports
 import { ParcelApiProvider } from './parcel';
 import { DrainApiProvider } from './drain';
-import { ParcelsCurvesApiProvider } from './curves/parcels';
-import { ParcelCurvesApiProvider } from './curves/parcel';
+import { TrimApiProvider } from './trim';
+import { CurvesApiProvider } from './curves';
 
 export const ApiProvider = ({children}: any) => {
   return (
     <DrainApiProvider>
-    <ParcelsCurvesApiProvider>
-    <ParcelCurvesApiProvider>
+    <TrimApiProvider>
+    <CurvesApiProvider>
     <ParcelApiProvider>
       {children}
     </ParcelApiProvider>
-    </ParcelCurvesApiProvider>
-    </ParcelsCurvesApiProvider>
+    </CurvesApiProvider>
+    </TrimApiProvider>
     </DrainApiProvider>
   )
 }

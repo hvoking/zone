@@ -1,14 +1,14 @@
 // Context imports
-import { useParcelCurvesApi } from '../../../../../context/api/curves/parcel';
+import { useCurvesApi } from '../../../../../context/api/curves';
 
 export const Curves = ({ path }: any) => {
-	const { parcelCurvesData } = useParcelCurvesApi();
+	const { curvesData } = useCurvesApi();
 
-	if (!parcelCurvesData) return <></>
+	if (!curvesData) return <></>
 
 	return (
 		<>
-			{parcelCurvesData.map((item: any, index: any) => 
+			{curvesData.map((item: any, index: any) => 
 				<path
 					key={index}
 					fill="transparent"

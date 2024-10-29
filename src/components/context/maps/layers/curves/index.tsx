@@ -2,7 +2,7 @@
 import { useContext, createContext } from 'react';
 
 // App imports
-import { useParcelsCurvesApi } from '../../../api/curves/parcels';
+import { useTrimApi } from '../../../api/trim';
 import { useVisibility } from '../../../filters/visibility';
 
 // Third-party imports
@@ -16,13 +16,13 @@ export const useCurves = () => {
 	return (useContext(CurvesContext))
 }
 export const CurvesProvider = ({children}: any) => {
-	const { parcelsCurvesData } = useParcelsCurvesApi();
+	const { trimData } = useTrimApi();
 	const { activeCurves } = useVisibility();
 	
-	const curvesLayer = parcelsCurvesData &&
+	const curvesLayer = trimData &&
 		new PathLayer({
 			id: 'curves-path',
-			data: parcelsCurvesData,
+			data: trimData,
 			pickable: false,
 			capRounded: true,
 			jointRounded: true,
