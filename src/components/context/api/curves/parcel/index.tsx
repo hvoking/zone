@@ -18,7 +18,7 @@ export const ParcelCurvesApiProvider = ({children}: any) => {
 		const fetchData = async () => {
 			const tempUrl = `
 				${process.env.REACT_APP_API_URL}/
-				parcel_curves_api
+				curves_api
 				?parcel_id=${parcelId}
 			`;
 			const url = tempUrl.replace(/\s/g, '');

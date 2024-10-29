@@ -18,7 +18,7 @@ export const ParcelsCurvesApiProvider = ({children}: any) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const res = await fetch(`${process.env.REACT_APP_API_URL}/parcels_curves_api`, {
+			const res = await fetch(`${process.env.REACT_APP_API_URL}/trim_api`, {
 				method: "POST",
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({ 
