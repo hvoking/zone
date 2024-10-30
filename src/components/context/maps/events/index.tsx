@@ -14,7 +14,7 @@ export const useEvents = () => {
 }
 
 export const EventsProvider = ({children}: any) => {
-		const { mapRef, marker, setMarker } = useGeo();
+		const { mapRef, marker, setMarker, setBaseGeometry } = useGeo();
 		
 		const [ isDragging, setIsDragging ] = useState(false);
 		const [ dragOffset, setDragOffset ] = useState({ x: 0, y: 0 });
@@ -66,13 +66,23 @@ export const EventsProvider = ({children}: any) => {
             const features = mapRef.current?.queryRenderedFeatures(event.point, {
                 layers: ["fill Single symbol"]
             });
+
+            const coordinates = features.map((item: any) => item.geometry.coordinates) 
+            const properties = features.map((item: any) => item.properties) 
+
+            
+
             const multiPolygon = {
             	"type": "MultiPolygon",
-            	"coordinates": features.map((item: any) => item.geometry.coordinates)
+            	"coordinates": coordinates,
+            	"properties": properties
+
             }
 
+            setBaseGeometry(multiPolygon)
+
             features.length > 0 && setEnvelopData(multiPolygon);
-        },[mapRef]);
+        },[ mapRef ]);
 
 	return (
 		<EventsContext.Provider value={{

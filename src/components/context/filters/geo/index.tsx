@@ -19,6 +19,7 @@ export const GeoProvider = ({children}: any) => {
 	
 	const [ parcelId, setParcelId ] = useState(41351);
 	const [ placeId, setPlaceId ] = useState(41351);
+	const [ baseGeometry, setBaseGeometry ] = useState<any>(null);
 
 	const [ viewport, setViewport ] = useState(Locations.blumenau);
 	
@@ -61,7 +62,8 @@ export const GeoProvider = ({children}: any) => {
 			cityId, setCityId, 
 			marker, setMarker,
 			placeCoordinates, setPlaceCoordinates,
-			placeId, setPlaceId
+			placeId, setPlaceId,
+			baseGeometry, setBaseGeometry
 		}}>
 			{children}
 		</GeoContext.Provider>

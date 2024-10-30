@@ -11,23 +11,25 @@ export const useCurvesApi = () => {
 }
 
 export const CurvesApiProvider = ({children}: any) => {
-	const { parcelId } = useGeo();
+	const { baseGeometry } = useGeo();
 	const [ curvesData, setCurvesData ] = useState<any>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const tempUrl = `
-				${process.env.REACT_APP_API_URL}/
-				curves_api
-				?parcel_id=${parcelId}
-			`;
-			const url = tempUrl.replace(/\s/g, '');
-			const res = await fetch(url);
+			const res = await fetch(`${process.env.REACT_APP_API_URL}/trim_api`, {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ 
+					"polygon": JSON.stringify(baseGeometry),
+					"table_schema": "ambiental",
+					"table_name": "blumenau_curvas"
+				}),
+			});
 			const receivedData = await res.json();
 			setCurvesData(receivedData);
 		}
-		fetchData();
-	}, [ parcelId ]);
+		baseGeometry && fetchData();
+	}, [ baseGeometry ]);
 
 	return (
 		<CurvesApiContext.Provider value={{ curvesData }}>
