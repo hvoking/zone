@@ -8,8 +8,8 @@ export const Right = () => {
   return (
     <div className="right-wrapper">
       <div className="right-items-wrapper">
-        <Site/>
         <Zone/>
+        <Site/>
         <Building/>
       </div>
     </div>

@@ -7,7 +7,7 @@ export const Logo = () => {
 			<img 
 				src={process.env.PUBLIC_URL + "/static/logos/logo.svg"} 
 				alt="logo" 
-				height="45px"
+				height="40px"
 			/>
 		</div>
 	)
