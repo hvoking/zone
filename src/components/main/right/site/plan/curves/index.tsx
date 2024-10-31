@@ -20,7 +20,7 @@ export const Curves = ({ path }: any) => {
 			const data = await fetchData(baseGeometry, tableSchema, tableName, tableColumn);
 			setCurvesData(data);
 		}
-		loadData();
+		baseGeometry && loadData();
 	}, [ baseGeometry ]);
 
 	if (!curvesData) return <></>
