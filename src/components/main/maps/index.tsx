@@ -16,6 +16,7 @@ import { Layers } from './layers';
 import { useGeo } from '../../context/filters/geo';
 import { useCircle } from '../../context/filters/circle';
 import { useEvents } from '../../context/maps/events';
+import { useVisibility } from '../../context/filters/visibility';
 
 // Third-party imports
 import { Map } from 'react-map-gl';
@@ -25,6 +26,7 @@ export const Maps = () => {
   const { mapRef, basemap, viewport, setPlaceCoordinates } = useGeo();
   const { isDragging, onDragStart, onMouseMove, onDragEnd, onClick } = useEvents();
   const { circleGeometry } = useCircle();
+  const { activeBuildings } = useVisibility();
 
   const onDblClick = useCallback((e: any) => {
     const lng = e.lngLat.lng;
@@ -83,7 +85,7 @@ export const Maps = () => {
         <Circle/>
         <Controllers/>
         <Tiles/>
-        <Mask/>
+        {activeBuildings && <Mask/>}
         <Avatar/>
       </Map>
 

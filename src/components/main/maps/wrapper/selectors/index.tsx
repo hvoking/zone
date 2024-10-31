@@ -9,15 +9,15 @@ export const Selectors = () => {
 	const { 
 		activeCurves, setActiveCurves, 
 		activeDrain, setActiveDrain,
-		activeLots, setActiveLots,
+		activeBuildings, setActiveBuildings,
 	} = useVisibility();
 
 	return (
 		<div className="selectors-wrapper">
 			<div>Layers</div>
 			<LayerSelector
-				activeLayer={activeLots}
-				setActiveLayer={setActiveLots}
+				activeLayer={activeBuildings}
+				setActiveLayer={setActiveBuildings}
 				name={"parcels"}
 			/>
 			<LayerSelector

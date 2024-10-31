@@ -24,8 +24,8 @@ export const DrainApiProvider = ({children}: any) => {
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({ 
 					"polygon": JSON.stringify(circleGeometry.geometry),
-					"schema": "infraestrutura",
-					"table": "rede_drenagem"
+					"table_schema": "infraestrutura",
+					"table_name": "rede_drenagem"
 				}),
 			});
 			const receivedData = await res.json();

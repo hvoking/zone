@@ -10,15 +10,13 @@ export const useVisibility = () => {
 export const VisibilityProvider = ({children}: any) => {
 	const [ activeCurves, setActiveCurves ] = useState(false);
 	const [ activeDrain, setActiveDrain ] = useState(false);
-	const [ activeLots, setActiveLots ] = useState(true);
-	const [ activePdf, setActivePdf ] = useState(false);
+	const [ activeBuildings, setActiveBuildings ] = useState(true);
 
 	return (
 		<VisibilityContext.Provider value={{ 
 			activeCurves, setActiveCurves,
 			activeDrain, setActiveDrain,
-			activeLots, setActiveLots,
-			activePdf, setActivePdf,
+			activeBuildings, setActiveBuildings,
 		}}>
 			{children}
 		</VisibilityContext.Provider>
