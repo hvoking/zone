@@ -19,13 +19,14 @@ export const DrainApiProvider = ({children}: any) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const res = await fetch(`${process.env.REACT_APP_API_URL}/drain_api`, {
+			const res = await fetch(`${process.env.REACT_APP_API_URL}/trim_api`, {
 				method: "POST",
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({ 
 					"polygon": JSON.stringify(circleGeometry.geometry),
 					"table_schema": "infraestrutura",
-					"table_name": "rede_drenagem"
+					"table_name": "rede_drenagem",
+					"table_column": "dimensions",
 				}),
 			});
 			const receivedData = await res.json();

@@ -15,7 +15,7 @@ export const Curves = ({ path }: any) => {
 					stroke={`rgba(255, 255, 255, 0.2)`}
 					strokeWidth={1}
 					className="feature" 
-					d={`${path(item[1])}`}
+					d={`${path(item.geometry)}`}
 				/>
 			)}
 		</>

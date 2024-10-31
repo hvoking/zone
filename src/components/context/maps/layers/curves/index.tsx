@@ -26,7 +26,7 @@ export const CurvesProvider = ({children}: any) => {
 			pickable: false,
 			capRounded: true,
 			jointRounded: true,
-			getPath: (d: any) => d[1].coordinates[0],
+			getPath: (d: any) => d.geometry.coordinates[0],
 			getColor: (d: any) => [ 0, 255, 0, 80 ],
 			getWidth: 1,
 			visible: activeCurves,
