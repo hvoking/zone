@@ -2,40 +2,40 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../../filters/geo';
+import { useGeo } from '../../filters/geo';
 
-const ZoneApiContext: React.Context<any> = createContext(null);
+const SiteApiContext: React.Context<any> = createContext(null);
 
-export const useZoneApi = () => {
+export const useSiteApi = () => {
 	return (
-		useContext(ZoneApiContext)
+		useContext(SiteApiContext)
 	)
 }
 
-export const ZoneApiProvider = ({children}: any) => {
+export const SiteApiProvider = ({children}: any) => {
   const { parcelId } = useGeo();
-  const [ zoneData, setZoneData ] = useState<any>(null);
+  const [ siteData, setSiteData ] = useState<any>(null);
   
   useEffect(() => {
     const fetchData = async () => {
       const tempUrl = `
         ${process.env.REACT_APP_API_URL}/
-        zone_api
+        site_api
         ?parcel_id=${parcelId}
       `;
       const url = tempUrl.replace(/\s/g, '');
       const res = await fetch(url);
       const receivedData = await res.json();
-      setZoneData(receivedData)
+      setSiteData(receivedData)
     }
     fetchData();
   }, [ parcelId ]);
 
   return (
-		<ZoneApiContext.Provider value={{ zoneData }}>
+		<SiteApiContext.Provider value={{ siteData }}>
 			{children}
-		</ZoneApiContext.Provider>
+		</SiteApiContext.Provider>
 	)
 }
 
-ZoneApiContext.displayName="ZoneApiContext";
+SiteApiContext.displayName="SiteApiContext";

@@ -1,5 +1,5 @@
 // Context imports
-import { useZoneApi } from '../../../context/api/parcel/zone';
+import { useZoneApi } from '../../../context/api/zone';
 import './styles.scss';
 
 export const Zone = () => {

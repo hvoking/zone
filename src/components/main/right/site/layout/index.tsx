@@ -8,8 +8,8 @@ import { Legend } from './legend';
 // Context imports
 import { useLayoutSizes } from '../../../../context/sizes/right/layout';
 import { useVectors } from '../../../../context/filters/vectors';
-import { useSiteApi } from '../../../../context/api/parcel/site';
-import { useBuildingApi } from '../../../../context/api/parcel/building';
+import { useSiteApi } from '../../../../context/api/site';
+import { useBuildingApi } from '../../../../context/api/building';
 
 // Third-party imports
 import * as d3 from 'd3';

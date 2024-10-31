@@ -2,8 +2,8 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useModule } from '../../../filters/module';
-import { useBuilding } from '../../../filters/building';
+import { useModule } from '../../filters/module';
+import { useBuilding } from '../../filters/building';
 import { useZoneApi } from '../zone';
 import { useSiteApi } from '../site';
 

@@ -7,7 +7,7 @@ import { Block } from './block';
 import { usePerspectiveSizes } from '../../../../context/sizes/right/perspective';
 import { useVectors } from '../../../../context/filters/vectors';
 import { useBuilding } from '../../../../context/filters/building';
-import { useBuildingApi } from '../../../../context/api/parcel/building';
+import { useBuildingApi } from '../../../../context/api/building';
 import { useModule } from '../../../../context/filters/module';
 
 // Third-party imports

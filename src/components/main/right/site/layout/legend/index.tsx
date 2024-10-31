@@ -1,5 +1,5 @@
 // Context import
-import { useSiteApi } from '../../../../../context/api/parcel/site';
+import { useSiteApi } from '../../../../../context/api/site';
 
 export const Legend = ({ innerHeight }: any) => {
 	const { lotData } = useSiteApi();

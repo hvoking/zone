@@ -3,7 +3,7 @@ import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
 import { useGeo } from '../../filters/geo';
-import { useEnvelopApi } from '../../api/parcel/envelop';
+import { useEnvelopApi } from '../../api/envelop';
 
 const EventsContext: React.Context<any> = createContext(null);
 

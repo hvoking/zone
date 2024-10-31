@@ -6,9 +6,9 @@ import { Curves } from './curves';
 import { Legend } from './legend';
 
 // Context imports
-import { useEnvelopApi } from '../../../../context/api/parcel/envelop';
+import { useEnvelopApi } from '../../../../context/api/envelop';
+import { useSiteApi } from '../../../../context/api/site';
 import { useParcelSizes } from '../../../../context/sizes/right/parcel';
-import { useSiteApi } from '../../../../context/api/parcel/site';
 
 // Third-party imports
 import * as d3 from 'd3';

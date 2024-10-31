@@ -4,7 +4,7 @@ import { SideBlocks } from './side';
 import './styles.scss';
 
 // Context imports
-import { useBuildingApi } from '../../../../context/api/parcel/building';
+import { useBuildingApi } from '../../../../context/api/building';
 import { useModule } from '../../../../context/filters/module';
 
 // Third-party imports
