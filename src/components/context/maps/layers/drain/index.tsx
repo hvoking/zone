@@ -1,5 +1,5 @@
 // React imports
-import { useContext, createContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 
 // Third-party imports
 // @ts-ignore
@@ -7,8 +7,9 @@ import { useContext, createContext } from 'react';
 import { PathLayer } from '@deck.gl/layers';
 
 // Context imports
-import { useDrainApi } from '../../../api/drain';
+import { useTrimApi } from '../../../api/trim';
 import { useVisibility } from '../../../filters/visibility';
+import { useCircle } from '../../../filters/circle';
 
 const DrainPathContext: React.Context<any> = createContext(null)
 
@@ -17,8 +18,24 @@ export const useDrain = () => {
 }
 
 export const DrainProvider = ({children}: any) => {
-	const { drainData } = useDrainApi();
+	const { fetchData } = useTrimApi();
 	const { activeDrain } = useVisibility();
+	const { circleGeometry } = useCircle();
+
+	const [ drainData, setDrainData ] = useState<any>(null);
+
+	const polygon = circleGeometry.geometry;
+	const tableSchema = "infraestrutura";
+	const tableName = "rede_drenagem";
+	const tableColumn = "dimensions";
+
+    useEffect(() => {
+    	const loadData = async () => {
+			const data = await fetchData(polygon, tableSchema, tableName, tableColumn);
+			setDrainData(data);
+		}
+		activeDrain && loadData();
+	}, [ activeDrain, circleGeometry ]);
 
 	const drainLayer = drainData &&
 		new PathLayer({

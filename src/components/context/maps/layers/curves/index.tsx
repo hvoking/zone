@@ -1,9 +1,10 @@
 // React imports
-import { useContext, createContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 
 // App imports
 import { useTrimApi } from '../../../api/trim';
 import { useVisibility } from '../../../filters/visibility';
+import { useCircle } from '../../../filters/circle';
 
 // Third-party imports
 // @ts-ignore
@@ -16,8 +17,24 @@ export const useCurves = () => {
 	return (useContext(CurvesContext))
 }
 export const CurvesProvider = ({children}: any) => {
-	const { trimData } = useTrimApi();
+	const { fetchData } = useTrimApi();
 	const { activeCurves } = useVisibility();
+	const { circleGeometry } = useCircle();
+
+	const [ trimData, setTrimData ] = useState<any>(null);
+
+	const polygon = circleGeometry.geometry
+	const tableSchema = "ambiental"
+	const tableName = "blumenau_curvas"
+	const tableColumn = "elevation"
+
+    useEffect(() => {
+    	const loadData = async () => {
+			const data = await fetchData(polygon, tableSchema, tableName, tableColumn);
+			setTrimData(data);
+		}
+		activeCurves && loadData();
+	}, [ activeCurves, circleGeometry ]);
 	
 	const curvesLayer = trimData &&
 		new PathLayer({

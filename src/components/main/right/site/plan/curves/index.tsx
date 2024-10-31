@@ -1,8 +1,27 @@
+// React imports
+import { useState, useEffect } from 'react';
+
 // Context imports
-import { useCurvesApi } from '../../../../../context/api/curves';
+import { useTrimApi } from '../../../../../context/api/trim';
+import { useGeo } from '../../../../../context/filters/geo';
 
 export const Curves = ({ path }: any) => {
-	const { curvesData } = useCurvesApi();
+	const { fetchData } = useTrimApi();
+	const { baseGeometry } = useGeo();
+
+	const [ curvesData, setCurvesData ] = useState<any>(null);
+
+	const tableSchema = "ambiental";
+	const tableName = "blumenau_curvas";
+	const tableColumn = "elevation";
+
+    useEffect(() => {
+    	const loadData = async () => {
+			const data = await fetchData(baseGeometry, tableSchema, tableName, tableColumn);
+			setCurvesData(data);
+		}
+		loadData();
+	}, [ baseGeometry ]);
 
 	if (!curvesData) return <></>
 
