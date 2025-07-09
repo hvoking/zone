@@ -39,9 +39,18 @@ export const BuildingApiProvider = ({children}: any) => {
         &garages=${garages}
       `;
       const url = tempUrl.replace(/\s/g, '');
-      const res = await fetch(url);
-      const receivedData = await res.json();
-      setBuildingData(receivedData)
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const receivedData = await res.json();
+        setBuildingData(receivedData);
+      }
+      catch (error) {
+        console.error("Error fetching address:", error);
+        return null;
+      }
     }
     zoneData && siteData && fetchData();
   }, [ zoneData, siteData, apartmentSide, apartmentFront, apartmentHeight ]);
